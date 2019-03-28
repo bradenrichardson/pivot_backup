@@ -6,8 +6,6 @@ import smtplib
 import ssl
 from datetime import datetime
 
-# Test - test
-
 # Scheduled booleans
 scheduled = False
 scheduled_hourly = False
