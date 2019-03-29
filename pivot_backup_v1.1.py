@@ -5,9 +5,7 @@ import ssl
 import smtplib
 import argparse
 
-# Implement if __name__ == __main__
-# Implement passing arguments through command line using argparse or click
-# Implement ease of use, IE calling this function from anywhere with CMD - Document
+# Implement ease of use, IE calling this function from anywhere with CMD - this is probably a windows setting
 
 # Create reporting arrays to produce reports
 reporting_array_copied = []
