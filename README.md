@@ -5,7 +5,7 @@ This will allow me to learn, develop and showcase my skills for future employmen
 
 - Python programming for back end of program
 - GUI design and implementation
-- Best practice coding and documentation standards followed
+- Best practice coding, version control and documentation standards followed
 - Project management
 - Linux administration
 - Webserver front end
