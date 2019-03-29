@@ -15,16 +15,18 @@ reporting_array_copied_to = []
 reporting_array_deleted = []
 
 # Argparse variables
+# Tested source and destination with backup directory function
 parser = argparse.ArgumentParser(description='Backup files/folders from one location to another')
-parser.add_argument('s', '--source', type=str, metavar='', required=True, help='Source directory to be copied')
-parser.add_argument('d', '--destination', type=str, metavar='', required=True,
+parser.add_argument('-s', '--source', type=str, metavar='', required=True, help='Source directory to be copied')
+parser.add_argument('-d', '--destination', type=str, metavar='', required=True,
                     help='Destination directory for copied files')
-parser.add_argument('cn', '--copy_new', type=bool, help='Copy newly modified files')
-parser.add_argument('dfi', '--delete_files', type=bool, help='Delete files afterwards')
-parser.add_argument('dfo', '--delete_folders', type=bool, help='Delete folders afterwards')
-parser.add_argument('rc', '--report_console', type=bool, help='Console output report')
-parser.add_argument('rt', '--report_text', type=bool, help='Text output report')
-parser.add_argument('re', '--report_email', type=bool, help='Email output report')
+parser.add_argument('-cn', '--copy_new', type=bool, help='Copy newly modified files')
+parser.add_argument('-dfi', '--delete_files', type=bool, help='Delete files afterwards')
+parser.add_argument('-dfo', '--delete_folders', type=bool, help='Delete folders afterwards')
+parser.add_argument('-rc', '--report_console', type=bool, help='Console output report')
+parser.add_argument('-rt', '--report_text', type=bool, help='Text output report')
+parser.add_argument('-re', '--report_email', type=bool, help='Email output report')
+parser.add_argument('-rea', '--reporting_email_address', type=str, help='Email address for reporting function')
 args = parser.parse_args()
 
 
@@ -32,7 +34,7 @@ args = parser.parse_args()
 datetime_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Specify email details
-reporting_email = ""
+reporting_email = args.reporting_email_address
 port = 465
 password = 'rjvswsakmeocayrm'
 sender_email = "braden.richardson13@gmail.com"
@@ -183,6 +185,21 @@ def email_report_deleted(deleted):
         send_report_email(string_join_list)
     return True
 
-# This works
+
+# Need to test
 if __name__ == '__main__':
-    backup_directory(args.source, args.destination)
+    backup_directory(args.source, args.destination, args.copy_new)
+    if args.delete_files:
+        delete_directory(args.source, args.delete_folders)
+    if args.report_console:
+        console_report_copied(reporting_array_copied, reporting_array_copied_to)
+        if args.delete_files:
+            console_report_deleted(reporting_array_deleted)
+    if args.report_text:
+        text_report_copied(reporting_array_copied, reporting_array_copied_to, args.destination)
+        if args.delete_files:
+            text_report_deleted(reporting_array_deleted, args.destination)
+    if args.report_email:
+        email_report_copied(reporting_array_copied, reporting_array_copied_to)
+        if args.delete_files:
+            email_report_deleted(reporting_array_deleted)
