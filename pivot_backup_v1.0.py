@@ -22,12 +22,10 @@ console_report = True
 text_report = False
 email_report = False
 
-# Console input or manual variable
-console_input = False
 
 # Set source/destination
-source_directory = 'C:/Users/braden.richardson/Documents/Python/Test 1'
-destination_directory = "C:/Users/braden.richardson/Documents/Python/Test 2"
+source_directory = 'C:/Users/braden.richardson/Documents/Testing/Test 1'
+destination_directory = "C:/Users/braden.richardson/Documents/Testing/Test 2"
 
 # Core timing variables
 datetime_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
