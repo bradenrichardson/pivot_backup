@@ -13,14 +13,17 @@ This will allow me to learn, develop and showcase my skills for future employmen
 - AWS serverless website deployment
 
 # pivot_backup_v1.0
-
-- Full functionality
+- Core functionality is recursive compare/copy between two directories
+- Full optional functionality included
+- Email/Text/Console reporting
+- Optional delete files and/or folders after
+- Optional copy if newly modified
+- Interval/Hourly/Daily in process scheduling
 - Enter variables by manually editing the .py file
 - Choose functionality by setting boolean values to True/False
 
 # pivot_backup_v1.1
-
-- No scheduler
+- Full functionality of v1.0 apart from Scheduler
 - Completely command line operated
 - Pass arguments for desired functionality through the command line when calling the program
 - Script enters through if __name__ == '__main__'
