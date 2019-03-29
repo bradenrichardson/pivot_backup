@@ -22,7 +22,6 @@ console_report = True
 text_report = False
 email_report = False
 
-
 # Set source/destination
 source_directory = 'C:/Users/braden.richardson/Documents/Testing/Test 1'
 destination_directory = "C:/Users/braden.richardson/Documents/Testing/Test 2"
