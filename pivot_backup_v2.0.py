@@ -18,7 +18,7 @@ layout = [[sg.Text('Source')],
           [sg.Text('Reporting', justification='centre')],
           [sg.Checkbox('Console', size=(17, 1)), sg.Checkbox('Text')],
           [sg.Checkbox('Email'), sg.InputText(background_color='Light Grey', text_color='Black', size=(36, 1))],
-          [sg.Submit(button_text='Run Backup', button_color=('Green', 'White'))]]
+          [sg.Submit(button_text='Run Backup', button_color=('White', 'Black'))]]
 
 
 window = sg.Window('Pivot Backup', default_element_size=(40, 1)).Layout(layout)
