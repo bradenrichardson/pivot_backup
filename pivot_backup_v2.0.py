@@ -189,7 +189,7 @@ layout = [[sg.Text('Source', font=('Helvetica', 12))],
           [sg.Checkbox('Console', size=(17, 1)), sg.Checkbox('Text')],
           [sg.Checkbox('Email', size=(4, 1)),
            sg.InputText(background_color='Light Grey', text_color='Black', size=(36, 1))],
-          [sg.Submit(button_text='Run Backup', button_color=('White', 'Black'), pad=(125, 0))]]
+          [sg.Submit(button_text='Run Backup', button_color=('White', 'Black'), pad=(125, 5))]]
 
 window = sg.Window('Pivot Backup', default_element_size=(40, 1)).Layout(layout)
 
@@ -213,18 +213,22 @@ while True:
     email_report = values[13]
     reporting_email = values[14]
 
-    backup_directory(source, destination, copy_new)
-    if delete_files:
-        delete_directory(source, delete_folders)
-    if console_report:
-        console_report_copied(reporting_array_copied, reporting_array_copied_to)
+    try:
+
+        backup_directory(source, destination, copy_new)
         if delete_files:
-            console_report_deleted(reporting_array_deleted)
-    if text_report:
-        text_report_copied(reporting_array_copied, reporting_array_copied_to, destination)
-        if delete_files:
-            text_report_deleted(reporting_array_deleted, destination)
-    if email_report:
-        email_report_copied(reporting_array_copied, reporting_array_copied_to)
-        if delete_files:
-            email_report_deleted(reporting_array_deleted)
+            delete_directory(source, delete_folders)
+        if console_report:
+            console_report_copied(reporting_array_copied, reporting_array_copied_to)
+            if delete_files:
+                console_report_deleted(reporting_array_deleted)
+        if text_report:
+            text_report_copied(reporting_array_copied, reporting_array_copied_to, destination)
+            if delete_files:
+                text_report_deleted(reporting_array_deleted, destination)
+        if email_report:
+            email_report_copied(reporting_array_copied, reporting_array_copied_to)
+            if delete_files:
+                email_report_deleted(reporting_array_deleted)
+    except FileNotFoundError:
+        sg.Popup('You need to enter a source and destination', button_color=('White', 'Black'))
