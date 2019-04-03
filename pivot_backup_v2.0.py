@@ -22,7 +22,7 @@ datetime_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Specify email details
 port = 465
-password = 'rjvswsakmeocayrm'
+password = 'xhumotaddlesyxju'
 sender_email = "braden.richardson13@gmail.com"
 context = ssl.create_default_context()
 
@@ -198,9 +198,10 @@ while True:
     delete_files = values[2]
     copy_new = values[3]
     delete_folders = values[4]
-    text_report = values[5]
-    email_report = values[6]
-    reporting_email = values[7]
+    no_report = values[5]
+    text_report = values[6]
+    email_report = values[7]
+    reporting_email = values[8]
 
     try:
         backup_directory(source, destination, copy_new)
