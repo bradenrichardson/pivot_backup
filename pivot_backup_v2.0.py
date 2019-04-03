@@ -4,8 +4,12 @@ import shutil
 from datetime import datetime
 import ssl
 import smtplib
-import schedule
-import time
+
+
+# TO DO
+# Test all functions of reporting - currently console is not working
+# Test and verify email reporting
+# Rectify error when closing window, especially in EXE version
 
 
 # Create reporting arrays to produce reports
