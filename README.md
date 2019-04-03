@@ -27,3 +27,9 @@ This will allow me to learn, develop and showcase my skills for future employmen
 - Completely command line operated
 - Pass arguments for desired functionality through the command line when calling the program
 - Script enters through if __name__ == '__main__'
+
+# pivot_backup_v2.0
+- Full functionality of V1.1
+- Completely GUI operated
+- Use of checkboxes, radio buttons, text input and file browsers to operate program
+- Developed using PySimpleGUI
