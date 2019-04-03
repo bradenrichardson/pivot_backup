@@ -182,7 +182,7 @@ layout = [[sg.Text('Source', font=('Helvetica', 12))],
           [sg.Checkbox('Files', size=(17, 1)), sg.Checkbox('If Newly Modified')],
           [sg.Checkbox('Folders')],
           [sg.Text('Reporting', pad=(10, 0), font=('Helvetica', 12))],
-          [sg.Radio('None', 'loss', size=(17, 1), default=True), sg.Radio('Console', 'loss', size=(8, 1)), sg.Radio('Text', 'loss')],
+          [sg.Radio('None', 'loss', size=(17, 1), default=True), sg.Radio('Text', 'loss')],
           [sg.Radio('Email', 'loss', size=(4, 1)),
            sg.InputText(background_color='Light Grey', text_color='Black', size=(36, 1))],
           [sg.Submit(button_text='Run Backup', button_color=('White', 'Black'), pad=(125, 5))]]
@@ -198,19 +198,14 @@ while True:
     delete_files = values[2]
     copy_new = values[3]
     delete_folders = values[4]
-    console_report = values[5]
-    text_report = values[6]
-    email_report = values[7]
-    reporting_email = values[8]
+    text_report = values[5]
+    email_report = values[6]
+    reporting_email = values[7]
 
     try:
         backup_directory(source, destination, copy_new)
         if delete_files:
             delete_directory(source, delete_folders)
-        if console_report:
-            console_report_copied(reporting_array_copied, reporting_array_copied_to)
-            if delete_files:
-                console_report_deleted(reporting_array_deleted)
         if text_report:
             text_report_copied(reporting_array_copied, reporting_array_copied_to, destination)
             if delete_files:
