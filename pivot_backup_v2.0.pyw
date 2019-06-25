@@ -7,10 +7,9 @@ import smtplib
 
 
 # TO DO
-# Test all functions of reporting - currently console is not working
+# Test all functions of reporting
 # Test and verify email reporting with personal email - DON'T PUSH TO GIT
 # Implement test email for reporting
-# Rectify error when closing window, especially in EXE version
 
 
 # Create reporting arrays to produce reports
