@@ -8,7 +8,8 @@ import smtplib
 
 # TO DO
 # Test all functions of reporting - currently console is not working
-# Test and verify email reporting
+# Test and verify email reporting with personal email - DON'T PUSH TO GIT
+# Implement test email for reporting
 # Rectify error when closing window, especially in EXE version
 
 
@@ -22,8 +23,8 @@ datetime_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Specify email details
 port = 465
-password = 'xhumotaddlesyxju'
-sender_email = "braden.richardson13@gmail.com"
+password = 'jklasdfg98234892350'
+sender_email = "projectpivotbackup@gmail.com"
 context = ssl.create_default_context()
 
 
@@ -189,8 +190,8 @@ layout = [[sg.Text('Source', font=('Helvetica', 12))],
 
 window = sg.Window('Pivot Backup', default_element_size=(40, 1)).Layout(layout)
 
-
-while True:
+testBool = True
+while testBool:
     button, values = window.Read()
 
     source = values[0]
@@ -198,7 +199,6 @@ while True:
     delete_files = values[2]
     copy_new = values[3]
     delete_folders = values[4]
-    no_report = values[5]
     text_report = values[6]
     email_report = values[7]
     reporting_email = values[8]
@@ -217,6 +217,5 @@ while True:
                 email_report_deleted(reporting_array_deleted)
     except FileNotFoundError:
         sg.Popup('You need to enter a source and destination', button_color=('White', 'Black'))
-
-    if button is None:
-        break
+    except TypeError:
+        testBool = False
