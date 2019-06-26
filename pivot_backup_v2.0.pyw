@@ -26,6 +26,9 @@ password = ''
 sender_email = ""
 context = ssl.create_default_context()
 
+# Boolean value to hold the window open persistently
+windowBool = True
+
 
 def copy_file_and_report(item_path, destination_path, item, destination):
     shutil.copy2(item_path, destination_path)
@@ -189,32 +192,33 @@ layout = [[sg.Text('Source', font=('Helvetica', 12))],
 
 window = sg.Window('Pivot Backup', default_element_size=(40, 1)).Layout(layout)
 
-testBool = True
-while testBool:
-    button, values = window.Read()
 
-    source = values[0]
-    destination = values[1]
-    delete_files = values[2]
-    copy_new = values[3]
-    delete_folders = values[4]
-    text_report = values[6]
-    email_report = values[7]
-    reporting_email = values[8]
-
+while windowBool:
     try:
-        backup_directory(source, destination, copy_new)
-        if delete_files:
-            delete_directory(source, delete_folders)
-        if text_report:
-            text_report_copied(reporting_array_copied, reporting_array_copied_to, destination)
+        button, values = window.Read()
+
+        source = values[0]
+        destination = values[1]
+        delete_files = values[2]
+        copy_new = values[3]
+        delete_folders = values[4]
+        text_report = values[6]
+        email_report = values[7]
+        reporting_email = values[8]
+
+        try:
+            backup_directory(source, destination, copy_new)
             if delete_files:
-                text_report_deleted(reporting_array_deleted, destination)
-        if email_report:
-            email_report_copied(reporting_array_copied, reporting_array_copied_to)
-            if delete_files:
-                email_report_deleted(reporting_array_deleted)
-    except FileNotFoundError:
-        sg.Popup('You need to enter a source and destination', button_color=('White', 'Black'))
+                delete_directory(source, delete_folders)
+            if text_report:
+                text_report_copied(reporting_array_copied, reporting_array_copied_to, destination)
+                if delete_files:
+                    text_report_deleted(reporting_array_deleted, destination)
+            if email_report:
+                email_report_copied(reporting_array_copied, reporting_array_copied_to)
+                if delete_files:
+                    email_report_deleted(reporting_array_deleted)
+        except FileNotFoundError:
+            sg.Popup('You need to enter a source and destination', button_color=('White', 'Black'))
     except TypeError:
-        testBool = False
+        windowBool = False
