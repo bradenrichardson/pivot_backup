@@ -22,8 +22,8 @@ datetime_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Specify email details
 port = 465
-password = 'jklasdfg98234892350'
-sender_email = "projectpivotbackup@gmail.com"
+password = ''
+sender_email = ""
 context = ssl.create_default_context()
 
 
