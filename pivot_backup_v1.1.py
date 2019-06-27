@@ -34,8 +34,8 @@ datetime_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 # Specify email details
 reporting_email = args.reporting_email_address
 port = 465
-password = 'rjvswsakmeocayrm'
-sender_email = "braden.richardson13@gmail.com"
+password = ""
+sender_email = ""
 context = ssl.create_default_context()
 
 
